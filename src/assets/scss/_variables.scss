@@ -1,0 +1,13 @@
+$color-primary: #0074d9;
+$color-secondary: #7fdbff;
+$color-tertiary: #39cccc;
+
+// _globals.scss
+$primary-color: #3498db;
+$secondary-color: #2ecc71;
+
+@mixin flex-center {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
