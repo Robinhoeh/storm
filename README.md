@@ -1,16 +1,19 @@
 # storm-robin
 
-This template should help get you started developing with Vue 3 in Vite.
+This is a take-home assignment for Tucows
 
-## Recommended IDE Setup
+## TODO: finish this and try before shipping
 
-[VSCode](https://code.visualstudio.com/) + [Volar](https://marketplace.visualstudio.com/items?itemName=Vue.volar) (and disable Vetur).
+## Built using:
 
-## Customize configuration
+- SCSS
+- Vue 3 composition api
 
-See [Vite Configuration Reference](https://vite.dev/config/).
+## Running the project locally
 
-## Project Setup
+1. Clone the repo
+2. run `npm i` \*\* try this before
+3. run the app: `npm run dev`
 
 ```sh
 npm install
