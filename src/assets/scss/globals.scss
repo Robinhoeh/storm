@@ -1,7 +1,14 @@
+// This @use is used to surface the variables, mixins, and functions from the other files in the project.
 @use './base' as *;
 @use './layouts' as *;
 @use './typography' as *;
 @use './variables' as *;
+
+// This @forward is used to access the styles in the components
+@forward 'layouts';
+@forward 'typography';
+@forward 'variables';
+@forward 'base';
 
 h6 {
   font-size: $font-size-xl;

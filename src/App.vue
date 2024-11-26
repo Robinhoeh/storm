@@ -1,49 +1,63 @@
 <script setup>
+import StormNav from './components/NavBar/StormNav.vue';
+
 
 </script>
 
 <template>
-  <header>
-    <h2>Hello</h2>
-    <p>Sup im mr p</p>
-    <span>im so spanny</span>
-    <!-- <img alt="Vue logo" class="logo" src="./assets/logo.svg" width="125" height="125" />
+  <div class="wrapper">
+    <StormNav class="nav-bar" />
 
-    <div class="wrapper">
-      <HelloWorld msg="You did it!" />
-    </div> -->
-  </header>
+    <form @submit.prevent="">
+      <input type='text'>
+      <button>Search</button>
+    </form>
 
-  <main>
-    <!-- <TheWelcome /> -->
-  </main>
+    <h2>Products</h2>
+    <span>10 of 10</span>
+    <table>
+      <thead>
+        <tr>
+          <th>ID</th>
+          <th>Status</th>
+          <th>Quantitit</th>
+          <th>Product</th>
+          <th>Price</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>stuff</td>
+          <td>stuff 2</td>
+          <td>stuff 3</td>
+          <td>stuff 4</td>
+          <td>stuff 5</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+
 </template>
 
 <style scoped lang="scss">
-/* header {
-  line-height: 1.5;
-}
+.wrapper {
+  display: flex;
+  justify-items: center;
+  flex-direction: column;
+  align-items: center;
+  height: 100vh;
+  margin: $layout-padding-mobile;
+  width: auto;
+  // min-width: $layout-min-width;
 
-.logo {
-  display: block;
-  margin: 0 auto 2rem;
-}
-
-@media (min-width: 1024px) {
-  header {
+  .nav-bar {
     display: flex;
-    place-items: center;
-    padding-right: calc(var(--section-gap) / 2);
+    justify-content: space-between;
+    align-items: center;
+    margin: 40px 0 22px 0;
+    width: 100%;
+    max-width: 350px;
   }
 
-  .logo {
-    margin: 0 2rem 0 0;
-  }
-
-  header .wrapper {
-    display: flex;
-    place-items: flex-start;
-    flex-wrap: wrap;
-  }
-} */
+}
 </style>

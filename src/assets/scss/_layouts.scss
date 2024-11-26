@@ -8,7 +8,7 @@ $breakpoints: (
 );
 
 $max-window-width: 1440px;
-$min-window-width: 390px;
+$layout-min-width: 390px;
 
 // Page layout
 $layout-desktop: (
@@ -20,12 +20,7 @@ $layout-desktop: (
   ),
 );
 
-$layout-mobile: (
-  max: (
-    left: 25px,
-    right: 25px,
-  ),
-);
+$layout-padding-mobile: 0 25px 0 25px;
 
 // Modal layout
 $modal-desktop: (
