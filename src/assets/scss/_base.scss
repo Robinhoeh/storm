@@ -1,187 +1,187 @@
-// $color-primary: #0074d9;
-// $color-secondary: #7fdbff;
-// $color-tertiary: #39cccc;
+// // $color-primary: #0074d9;
+// // $color-secondary: #7fdbff;
+// // $color-tertiary: #39cccc;
 
-// // _globals.scss
-// $primary-color: #3498db;
-// $secondary-color: #2ecc71;
+// // // _globals.scss
+// // $primary-color: #3498db;
+// // $secondary-color: #2ecc71;
 
-// button and copy colors
+// // button and copy colors
+// // $color-primary: #605dec;
+// // hover button color
+// // $color-secondary: #344293;
+// // button cancel bg
+// // $color-tertiary: #f9f9fb;
+
+// // button hover color white bg
+// // $color-tertiary: #f9f9fb;
+// $button-cancel-text: #000000de;
+
+// // button hover purple
 // $color-primary: #605dec;
-// hover button color
-// $color-secondary: #344293;
-// button cancel bg
-// $color-tertiary: #f9f9fb;
+// // text: #FFFFFFDE
 
-// button hover color white bg
-// $color-tertiary: #f9f9fb;
-$button-cancel-text: #000000de;
+// // $color-secondary: #344293;
+// // text: #ffffff
 
-// button hover purple
-$color-primary: #605dec;
-// text: #FFFFFFDE
+// // // button cancel text
+// // $button-cancel-text: #000000DE;
 
-// $color-secondary: #344293;
-// text: #ffffff
+// // //button default
+// // width: Hug (97px)px;
+// // height: Hug (44px)px;
+// // top: 20px;
+// // left: 20px;
+// // padding: 12px 24px 12px 24px;
+// // gap: 4px;
+// // border-radius: 4px 0px 0px 0px;
+// // opacity: 0px;
 
-// // button cancel text
-// $button-cancel-text: #000000DE;
+// // // pill colors
+// // $light-purple: #e4e4ef;
+// // $light-green: #ebf6eb;
+// // $light-orange: #fff4e4;
+// // $light-red: #fff0f0;
 
-// //button default
-// width: Hug (97px)px;
-// height: Hug (44px)px;
-// top: 20px;
-// left: 20px;
-// padding: 12px 24px 12px 24px;
-// gap: 4px;
-// border-radius: 4px 0px 0px 0px;
-// opacity: 0px;
+// // // pill text colors
+// // $pill-purple-text: #605dec;
+// // $pill-green-text: #31aa27;
+// // $pill-orange-text: #e99518;
+// // $pill-red-text: #f93232;
 
-// // pill colors
-// $light-purple: #e4e4ef;
-// $light-green: #ebf6eb;
-// $light-orange: #fff4e4;
-// $light-red: #fff0f0;
+// // // pill spacing
+// // width: Hug (83px)px;
+// // height: Hug (28px)px;
+// // padding: 4px 24px 4px 24px;
+// // gap: 0px;
+// // border-radius: 12px 0px 0px 0px;
+// // border: 1px 0px 0px 0px;
+// // opacity: 0px;
 
-// // pill text colors
-// $pill-purple-text: #605dec;
-// $pill-green-text: #31aa27;
-// $pill-orange-text: #e99518;
-// $pill-red-text: #f93232;
+// // // colors
+// // $input-border:#DCDFE3;
 
-// // pill spacing
-// width: Hug (83px)px;
-// height: Hug (28px)px;
-// padding: 4px 24px 4px 24px;
-// gap: 0px;
-// border-radius: 12px 0px 0px 0px;
-// border: 1px 0px 0px 0px;
-// opacity: 0px;
+// // $primary-text-color: #1A1A1A;
+// // // table light
+// // $text-color-light: #808080;
+// // //styleName: Body 2;
+// // font-family: Nunito Sans;
+// // font-size: 12px;
+// // font-weight: 400;
+// // line-height: 20px;
+// // text-align: left;
+// // text-underline-position: from-font;
+// // text-decoration-skip-ink: none;
 
-// // colors
-// $input-border:#DCDFE3;
+// // // table border
+// // $table-border: #E4E4EF;
 
-// $primary-text-color: #1A1A1A;
-// // table light
-// $text-color-light: #808080;
-// //styleName: Body 2;
-// font-family: Nunito Sans;
-// font-size: 12px;
-// font-weight: 400;
-// line-height: 20px;
-// text-align: left;
-// text-underline-position: from-font;
-// text-decoration-skip-ink: none;
+// // // typography
+// // // modal heaer text
+// // //styleName: Heading/H6;
+// // font-family: Inter;
+// // font-size: 20px;
+// // font-weight: 700;
+// // line-height: 24px;
+// // text-align: left;
+// // text-underline-position: from-font;
+// // text-decoration-skip-ink: none;
 
-// // table border
-// $table-border: #E4E4EF;
+// // //table headers
+// // font-family: Nunito Sans;
+// // font-size: 16px;
+// // font-weight: 700;
+// // line-height: 20px;
+// // text-align: center;
+// // text-underline-position: from-font;
+// // text-decoration-skip-ink: none;
+// // color: #1A1A1A;
 
-// // typography
-// // modal heaer text
-// //styleName: Heading/H6;
-// font-family: Inter;
-// font-size: 20px;
-// font-weight: 700;
-// line-height: 24px;
-// text-align: left;
-// text-underline-position: from-font;
-// text-decoration-skip-ink: none;
+// // // table data text
+// // font-family: Nunito Sans;
+// // font-size: 14px;
+// // font-weight: 400;
+// // line-height: 20px;
+// // text-align: left;
+// // text-underline-position: from-font;
+// // text-decoration-skip-ink: none;
 
-// //table headers
-// font-family: Nunito Sans;
-// font-size: 16px;
-// font-weight: 700;
-// line-height: 20px;
-// text-align: center;
-// text-underline-position: from-font;
-// text-decoration-skip-ink: none;
-// color: #1A1A1A;
+// // //icons
+// // 44px
 
-// // table data text
-// font-family: Nunito Sans;
-// font-size: 14px;
-// font-weight: 400;
-// line-height: 20px;
-// text-align: left;
-// text-underline-position: from-font;
-// text-decoration-skip-ink: none;
+// // //modal icon x
+// // 24px
+// // width: Hug (40px)px;
+// // height: Hug (40px)px;
+// // padding: 8px 0px 0px 0px;
+// // gap: 10px;
+// // opacity: 0px;
 
-// //icons
-// 44px
+// // // modal background
+// // $modal-background: #00000066;
 
-// //modal icon x
-// 24px
-// width: Hug (40px)px;
-// height: Hug (40px)px;
-// padding: 8px 0px 0px 0px;
-// gap: 10px;
-// opacity: 0px;
+// // // modal
+// // width: Fixed (600px)px; - adjust
+// // height: Hug (204px)px;
+// // padding: 40px 0px 0px 0px;
+// // gap: 16px;
+// // border-radius: 8px 0px 0px 0px;
+// // opacity: 0px;
+// // backround: #00000066
 
-// // modal background
-// $modal-background: #00000066;
+// // // layout
+// // $max-window-width: 1440px;
+// // $min-window-width: 390px;
 
-// // modal
-// width: Fixed (600px)px; - adjust
-// height: Hug (204px)px;
-// padding: 40px 0px 0px 0px;
-// gap: 16px;
-// border-radius: 8px 0px 0px 0px;
-// opacity: 0px;
-// backround: #00000066
+// // //table cell border
+// // 	#E4E4EF
 
-// // layout
-// $max-window-width: 1440px;
-// $min-window-width: 390px;
+// // // page layout
 
-// //table cell border
-// 	#E4E4EF
+// // max
+// // 128px left  :right
+// // bottom 178
+// // top 230
 
-// // page layout
+// // //table layout cells
+// // table header:
+// // width: Fill (70px)px;
+// // height: Hug (56px)px;
+// // padding: 18px 16px 18px 16px;
+// // gap: 10px;
+// // opacity: 0px;
 
-// max
-// 128px left  :right
-// bottom 178
-// top 230
+// // Id:
+// // width: Fill (70px)px;
+// // height: Hug (56px)px;
+// // padding: 18px 16px 18px 16px;
+// // gap: 10px;
+// // opacity: 0px;
 
-// //table layout cells
-// table header:
-// width: Fill (70px)px;
-// height: Hug (56px)px;
-// padding: 18px 16px 18px 16px;
-// gap: 10px;
-// opacity: 0px;
+// // status:
+// // width: Fill (144px)px;
+// // height: Hug (56px)px;
+// // padding: 14px 16px 14px 16px;
+// // gap: 10px;
+// // opacity: 0px;
 
-// Id:
-// width: Fill (70px)px;
-// height: Hug (56px)px;
-// padding: 18px 16px 18px 16px;
-// gap: 10px;
-// opacity: 0px;
+// // status:
+// // width: Fill (125px)px;
+// // height: Hug (56px)px;
+// // padding: 18px 16px 18px 16px;
+// // gap: 10px;
+// // opacity: 0px;
 
-// status:
-// width: Fill (144px)px;
-// height: Hug (56px)px;
-// padding: 14px 16px 14px 16px;
-// gap: 10px;
-// opacity: 0px;
+// // product:
+// // width: Fill (671px)px;
+// // height: Hug (56px)px;
+// // padding: 8px 18px 8px 16px;
+// // gap: 10px;
+// // opacity: 0px;
 
-// status:
-// width: Fill (125px)px;
-// height: Hug (56px)px;
-// padding: 18px 16px 18px 16px;
-// gap: 10px;
-// opacity: 0px;
-
-// product:
-// width: Fill (671px)px;
-// height: Hug (56px)px;
-// padding: 8px 18px 8px 16px;
-// gap: 10px;
-// opacity: 0px;
-
-// prices:
-// width: Fill (171px)px;
-// height: Hug (56px)px;
-// padding: 18px 16px 18px 16px;
-// gap: 10px;
-// opacity: 0px;
+// // prices:
+// // width: Fill (171px)px;
+// // height: Hug (56px)px;
+// // padding: 18px 16px 18px 16px;
+// // gap: 10px;
+// // opacity: 0px;

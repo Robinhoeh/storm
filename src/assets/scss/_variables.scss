@@ -1,13 +1,23 @@
-// $color-primary: #0074d9;
-// $color-secondary: #7fdbff;
-// $color-tertiary: #39cccc;
+// Theme colors
+$color-primary: #605dec;
+$color-secondary: #344293;
+$color-tertiary: #f9f9fb;
 
-// _globals.scss
-$primary-color: #3498db;
-$secondary-color: #2ecc71;
+// Text colors
+$primary-copy-color: #1a1a1a;
+$secondary-copy-color: #808080;
 
-@mixin flex-center {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-}
+// Mask colors
+$mask-color: #00000066;
+
+// Pill colors
+$light-purple: #e4e4ef;
+$light-green: #ebf6eb;
+$light-orange: #fff4e4;
+$light-red: #fff0f0;
+
+// Pill text colors
+$pill-purple-text: #605dec;
+$pill-green-text: #31aa27;
+$pill-orange-text: #e99518;
+$pill-red-text: #f93232;
