@@ -1,4 +1,28 @@
-@forward 'base';
-@forward 'layouts';
-@forward 'typography';
-@forward 'variables';
+@use './base' as *;
+@use './layouts' as *;
+@use './typography' as *;
+@use './variables' as *;
+
+h6 {
+  font-size: $font-size-xl;
+  font-weight: $font-weight-bold;
+  line-height: $line-height-lg;
+  font-family: $secondary-font;
+  color: $primary-text-color;
+}
+
+p {
+  font-size: $font-size-lg;
+  font-weight: $font-weight-bold;
+  line-height: $line-height-sm;
+  font-family: $primary-font;
+  color: $primary-text-color;
+}
+
+span {
+  font-size: $font-size-md;
+  font-weight: $font-weight-normal;
+  line-height: $line-height-sm;
+  font-family: $primary-font;
+  color: $primary-text-color;
+}
