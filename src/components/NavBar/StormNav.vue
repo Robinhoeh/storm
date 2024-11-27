@@ -4,9 +4,6 @@ import IconStormHamburger from '../icons/IconHamburger.vue';
 import IconGear from '../icons/IconGear.vue';
 import IconUser from '../icons/IconUser.vue';
 import IconNotification from '../icons/IconNotification.vue';
-
-
-
 </script>
 
 <template>
@@ -92,8 +89,6 @@ import IconNotification from '../icons/IconNotification.vue';
     }
   }
 
-
-
   @media screen and (min-width: 992px) {
     .hamburger {
       display: none;
@@ -105,21 +100,23 @@ import IconNotification from '../icons/IconNotification.vue';
     justify-content: space-between;
     width: auto;
 
+
+    // TODO: fix input sizing
     .search-input {
       padding: 10px 0 10px 16px;
       min-width: 100px;
-      width: 300px;
+      width: 220px;
       border-radius: 8px;
       border: none;
       border: 1px solid $input-border;
       margin-right: 25px;
 
       @media screen and (min-width: 992px) {
-        width: 260px;
         margin-right: 16px;
+        min-width: 155px;
+        width: 260px;
       }
     }
-
 
 
     input::placeholder {
