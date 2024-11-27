@@ -8,11 +8,6 @@ import StormNav from './components/NavBar/StormNav.vue';
   <div class="wrapper">
     <StormNav class="nav-bar" />
 
-    <form @submit.prevent="">
-      <input type='text'>
-      <button>Search</button>
-    </form>
-
     <h2>Products</h2>
     <span>10 of 10</span>
     <table>
@@ -51,13 +46,12 @@ import StormNav from './components/NavBar/StormNav.vue';
   // min-width: $layout-min-width;
 
   .nav-bar {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
     margin: 40px 0 22px 0;
-    width: 100%;
-    max-width: 350px;
+    max-width: 650px;
   }
+
+
+
 
 }
 </style>
