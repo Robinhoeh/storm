@@ -6,7 +6,7 @@ import StormNav from './components/NavBar/StormNav.vue';
 
 <template>
   <div class="wrapper">
-    <StormNav class="nav-bar" />
+    <StormNav />
 
     <h2>Products</h2>
     <span>10 of 10</span>
@@ -43,15 +43,10 @@ import StormNav from './components/NavBar/StormNav.vue';
   height: 100vh;
   margin: $layout-padding-mobile;
   width: auto;
-  // min-width: $layout-min-width;
+  margin: 40px 25px 0 25px;
 
-  .nav-bar {
-    margin: 40px 0 22px 0;
-    max-width: 650px;
+  @media screen and (min-width: 992px) {
+    margin: 80px 128px 0px 80px;
   }
-
-
-
-
 }
 </style>
