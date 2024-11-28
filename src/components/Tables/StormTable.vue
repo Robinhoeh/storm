@@ -1,10 +1,27 @@
 <script setup>
+import { ref, onMounted, onUnmounted } from 'vue';
 import IconArrowDown from '../icons/IconArrowDown.vue';
 
 const props = defineProps({
   tableData: Array,
+  mobileData: Array,
   tableHeaders: Array,
 });
+
+
+const windowWidth = ref(window.innerWidth)
+
+const updateWindowWidth = () => {
+  windowWidth.value = window.innerWidth
+}
+
+onMounted(() => {
+  window.addEventListener('resize', updateWindowWidth)
+})
+
+onUnmounted(() => {
+  window.removeEventListener('resize', updateWindowWidth)
+})
 </script>
 
 <template>
@@ -24,9 +41,20 @@ const props = defineProps({
       </tr>
     </thead>
     <tbody>
-      <tr v-for="row in tableData" :key="row.id">
-        <td v-for="key in Object.keys(tableData[0])" :key="key" :data-type="key">{{ row[key] }}</td>
-      </tr>
+      <template v-if="windowWidth > 992">
+        <tr v-for="row in tableData" :key="row.id">
+          <td v-for="key in Object.keys(tableData[0])" :key="key" :data-type="key">{{ row[key] }}</td>
+        </tr>
+      </template>
+      <template v-else>
+        <tr v-for="row in mobileData" :key="row.id">
+          <td class="product">
+            <p class="product-data">{{ row.Product.prod }}</p>
+            <span class="product-meta-data">{{ row.Product.serial }} - </span>
+            <span class="product-meta-data">Qty: {{ row.Product.quantity }}</span>
+          </td>
+        </tr>
+      </template>
     </tbody>
   </table>
 </template>
@@ -135,6 +163,23 @@ table {
 
       }
     }
+
+    .product-data {
+      margin: 0;
+      font-size: $font-size-md;
+      line-height: $line-height-sm;
+      color: $primary-text-color;
+    }
+
+    .product-meta-data {
+      font-size: $font-size-sm;
+      line-height: $line-height-sm;
+      color: $secondary-text-color;
+    }
+  }
+
+  .product {
+    padding: 8px 18px 8px 16px;
   }
 
   tr:last-child td {
