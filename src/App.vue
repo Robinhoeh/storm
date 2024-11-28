@@ -101,6 +101,7 @@ const formattedData = computed(() => {
       product: {
         prod: item.product,
         serial: item.serial,
+        image: item.image
       },
       Prices: item.total
     };
@@ -187,7 +188,8 @@ onUnmounted(() => {
       </template>
       <template #body>
         <div class="modal-data">
-          <img :src='selectedRow.product?.image' :alt='selectedRow.product?.prod'>
+          <img v-if="selectedRow.product?.image" :src='selectedRow.product.image' :alt='selectedRow.product?.prod'>
+          <p v-else class="no-image">No Image</p>
           <div class="modal-data-text">
             <p>Key Features</p>
             <ul>
@@ -242,10 +244,21 @@ onUnmounted(() => {
   }
 
   .modal-data {
+    .no-image {
+      background: $light-purple;
+      width: 50%;
+      height: 200px;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+    }
+
     @media screen and (min-width: 992px) {
       display: flex;
       justify-content: center;
       align-items: center;
+      gap: 12px;
+
     }
 
     img {

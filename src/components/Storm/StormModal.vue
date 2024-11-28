@@ -38,20 +38,23 @@ defineEmits(['closeModal']);
   left: 0;
   width: 100%;
   height: 100%;
+  max-height: 80vh;
   background-color: white;
   display: flex;
   justify-content: center;
   align-items: flex-start;
+  overflow-y: auto;
 
   @media screen and (min-width: 992px) {
     background-color: $mask-color;
     top: 0;
+    max-height: 100vh;
   }
 
   .modal-content {
     width: auto;
     min-width: 291px;
-    max-width: 600px;
+    max-width: 684px;
     padding: 0 16px 0 40px;
     background: white;
 
