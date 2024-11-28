@@ -91,31 +91,22 @@ const tableData = [
 ];
 
 const formattedData = computed(() => {
-  if (windowWidth.value < 992) {
-    return tableData.map((item) => {
-      return {
-        Product: {
-          prod: item.product,
-          serial: item.serial,
-          quantity: item.quantity
-        }
-      };
-    });
-  } else {
-    return tableData.map((item) => {
-      return {
-        ID: item.id,
-        Status: item.quantity > 50 ? "In Stock" : "Out of Stock",
-        Quantity: item.quantity,
-        Product: item.product,
-        Prices: item.total
-      };
-    });
-  }
+  return tableData.map((item) => {
+    return {
+      ID: item.id,
+      Status: item.quantity > 50 ? "In Stock" : "Out of Stock",
+      Quantity: item.quantity,
+      Product: {
+        prod: item.product,
+        serial: item.serial,
+        quantity: item.quantity
+      },
+      Prices: item.total
+    };
+  });
 });
 
 const mobileData = computed(() => {
-  // make each data set on a new line
   return tableData.map((item) => {
     return {
       Product: {
@@ -126,8 +117,6 @@ const mobileData = computed(() => {
     };
   });
 });
-
-console.log(mobileData.value);
 
 const tableHeaders = [
   "ID",
