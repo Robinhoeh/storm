@@ -99,7 +99,6 @@ const formattedData = computed(() => {
       Product: {
         prod: item.product,
         serial: item.serial,
-        quantity: item.quantity
       },
       Prices: item.total
     };

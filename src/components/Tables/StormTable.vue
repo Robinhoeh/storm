@@ -41,12 +41,12 @@ onUnmounted(() => {
             </tr>
         </thead>
         <tbody>
-            <tr v-for="row in windowWidth > 992 ? tableData : mobileData" :key="row.id">
-                <td v-for="key in Object.keys(windowWidth > 992 ? tableData[0] : mobileData[0])" :key="key" :data-type="key" :class="{ 'product': windowWidth <= 992 && key === 'Product' }">
+            <tr v-for="row in windowWidth >= 992 ? tableData : mobileData" :key="row.id">
+                <td v-for="key in Object.keys(windowWidth >= 992 ? tableData[0] : mobileData[0])" :key="key" :data-type="key" :class="{ 'product': windowWidth < 992 && key === 'Product' }">
                     <template v-if="key === 'Product'">
                         <p class="product-data">{{ row[key].prod }}</p>
-                        <span class="product-meta-data">{{ row[key].serial }}</span>
-                        <span class="product-meta-data">{{ windowWidth > 992 ? row[key].quantity : 'Qty: ' + row[key].quantity }}</span>
+                        <span class="product-meta-data">{{ row[key].serial }} </span>
+                        <span class="product-meta-data">{{ windowWidth >= 992 ? row[key].quantity : ' - Qty: ' + row[key].quantity }}</span>
                     </template>
                     <template v-else>
                         {{ row[key] }}
@@ -137,7 +137,7 @@ table {
         font-size: $font-size-md;
         line-height: $line-height-sm;
         color: $primary-text-color;
-        padding: 18px 16px;
+        padding: 8px 18px 8px 16px;
         text-align: center;
         border-bottom: 1px solid $light-purple;
         border-left: 0px solid $light-purple;
@@ -173,10 +173,6 @@ table {
             line-height: $line-height-sm;
             color: $secondary-text-color;
         }
-    }
-
-    .product {
-        padding: 8px 18px 8px 16px;
     }
 
     tr:last-child td {

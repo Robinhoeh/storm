@@ -62,6 +62,7 @@ import IconSearch from '../icons/IconSearch.vue';
 
     @media screen and (min-width: 992px) {
       margin-bottom: 0;
+      margin-right: 16px;
 
     }
   }
@@ -161,7 +162,7 @@ import IconSearch from '../icons/IconSearch.vue';
       padding: 12px 24px;
       width: 97px;
 
-      @media screen and (min-width: 992px) {
+      @media screen and (min-width: 1025px) {
         margin-right: 30px;
 
       }
