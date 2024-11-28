@@ -2,6 +2,8 @@
 import { computed, ref, onMounted, onUnmounted } from 'vue';
 import StormNav from './components/NavBar/StormNav.vue';
 import StormTable from './components/Tables/StormTable.vue';
+import StormModal from './components/Storm/StormModal.vue';
+import IconClose from './components/icons/IconClose.vue';
 
 const tableData = [
   {
@@ -111,7 +113,8 @@ const mobileData = computed(() => {
       product: {
         prod: item.product,
         serial: item.serial,
-        quantity: item.quantity
+        quantity: item.quantity,
+        id: item.id
       }
     };
   });
@@ -133,6 +136,26 @@ const formattedHeaders = computed(() => {
   }
 });
 
+const mockFeatures = [
+  "16 inch Retina Display",
+  "Touch Bar and Touch ID",
+  "2.6GHz 6-core 9th-generation Intel Core i7 processor",
+  "512GB SSD storage",
+];
+
+const mockFeatureDescription = "The new MacBook Pro features a stunning 16-inch Retina display — the largest Retina display ever in a Mac notebook. It produces 500 nits of brightness for spectacular highlights and bright whites, The new MacBook Pro features a stunning 16-inch Retina display — the largest Retina display ever in a Mac notebook. It produces 500 nits of brightness for spectacular highlights and bright whites"
+
+const displayModal = ref(false);
+const handleCloseModal = () => {
+  console.log("Closing modal");
+  displayModal.value = false;
+};
+
+const handleDisplayModal = (row) => {
+  displayModal.value = true;
+  console.log(row);
+};
+
 const windowWidth = ref(window.innerWidth)
 
 const updateWindowWidth = () => {
@@ -151,8 +174,30 @@ onUnmounted(() => {
 
 <template>
   <div class="wrapper">
+    <StormModal :display-modal="displayModal" @close-modal="handleCloseModal">
+      <template #title>
+        <div class="modal-title">
+          <h3>{{ tableData[0].product }}</h3>
+          <IconClose @click="handleCloseModal" />
+        </div>
+      </template>
+      <template #body>
+        <div class="modal-data">
+          <img :src='tableData[0].image' :alt='tableData[0].product'>
+          <div class="modal-data-text">
+            <p>Key Features</p>
+            <ul>
+              <li v-for="feature in mockFeatures" :key="feature">
+                {{ feature }}
+              </li>
+            </ul>
+            <p>{{ mockFeatureDescription }}</p>
+          </div>
+        </div>
+      </template>
+    </StormModal>
     <StormNav />
-    <StormTable :table-data="formattedData" :mobile-data="mobileData" :table-headers="formattedHeaders" />
+    <StormTable @row-clicked="handleDisplayModal" :table-data="formattedData" :mobile-data="mobileData" :table-headers="formattedHeaders" />
   </div>
 
 </template>
@@ -170,6 +215,58 @@ onUnmounted(() => {
 
   @media screen and (min-width: 992px) {
     margin: 80px 128px 0px 80px;
+  }
+
+  .modal-title {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    font-family: $secondary-font;
+    font-weight: $font-weight-bold;
+    font-size: $font-size-xl;
+    line-height: $line-height-lg;
+    margin: 0;
+    margin-bottom: 16px;
+
+    svg {
+      cursor: pointer;
+    }
+  }
+
+  .modal-data {
+    img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      margin-bottom: 35px;
+    }
+
+    .modal-data-text {
+      p {
+        font-family: $primary-font;
+        font-weight: $font-weight-normal;
+        font-size: $font-size-lg;
+        line-height: $line-height-sm;
+        margin-bottom: 16px;
+        line-height: 34px;
+
+
+      }
+
+      ul {
+        margin: 0;
+        padding: 0;
+
+        li {
+          font-family: $primary-font;
+          font-weight: $font-weight-normal;
+          font-size: $font-size-sm;
+          line-height: $line-height-sm;
+          margin-bottom: 10px;
+          margin-left: 12px;
+        }
+      }
+    }
   }
 }
 </style>

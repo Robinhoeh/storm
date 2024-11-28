@@ -9,6 +9,8 @@ const props = defineProps({
     tableHeaders: Array,
 });
 
+const emit = defineEmits(['row-clicked']);
+
 
 const windowWidth = ref(window.innerWidth)
 
@@ -16,9 +18,16 @@ const updateWindowWidth = () => {
     windowWidth.value = window.innerWidth
 }
 
-const handleRowClick = (id) => {
+
+
+const handleRowClick = (row) => {
+    emit('row-clicked', row);
     console.log('Row clicked');
-    console.log(id);
+    if (windowWidth.value < 992) {
+        console.log(row.product.id);
+    } else {
+        console.log(row.id);
+    }
 }
 
 onMounted(() => {
@@ -47,8 +56,8 @@ onUnmounted(() => {
             </tr>
         </thead>
         <tbody>
-            <tr @click="handleRowClick(row.id)" v-for="row in windowWidth >= 992 ? tableData : mobileData" :key="row.id">
-                <td v-for="key in Object.keys(windowWidth >= 992 ? tableData[0] : mobileData[0])" :key="key" :data-type="key" :class="{ 'product': windowWidth < 992 && key === 'product' }">
+            <tr v-for="row in windowWidth >= 992 ? tableData : mobileData" :key="row.id">
+                <td @click="handleRowClick(row)" v-for="key in Object.keys(windowWidth >= 992 ? tableData[0] : mobileData[0])" :key="key" :data-type="key" :class="{ 'product': windowWidth < 992 && key === 'product' }">
                     <template v-if="key === 'product'">
                         <p class="product-data">{{ row[key].prod }}</p>
                         <span class="product-meta-data">{{ row[key].serial }} </span>
