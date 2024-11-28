@@ -5,6 +5,8 @@ import IconGear from '../icons/IconGear.vue';
 import IconUser from '../icons/IconUser.vue';
 import IconNotification from '../icons/IconNotification.vue';
 import IconSearch from '../icons/IconSearch.vue';
+
+const searchModel = defineModel()
 </script>
 
 <template>
@@ -14,11 +16,10 @@ import IconSearch from '../icons/IconSearch.vue';
       <IconStormHamburger class="hamburger" />
     </div>
     <div class="nav-actions">
+      <!-- make this form StormForm -->
       <form class="search-form" @submit.prevent="">
-        <!-- <div class="search-container"> -->
         <IconSearch class="search-icon" />
-        <input class="search-input" type='text' placeholder="Search">
-        <!-- </div> -->
+        <input v-model="searchModel" class="search-input" type='text' placeholder="Search">
         <button class="button">Search</button>
       </form>
       <div class="nav-actions-icons">

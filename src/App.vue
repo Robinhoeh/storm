@@ -161,6 +161,17 @@ const handleDisplayModal = (row) => {
   displayModal.value = true
 };
 
+const searchTerm = ref('')
+
+const filteredData = computed(() => {
+  const data = windowWidth.value < 992 ? mobileData.value : formattedData.value
+  return data.filter((item) => {
+    return item.product.prod.toLowerCase().includes(searchTerm.value.toLowerCase())
+  })
+})
+
+
+
 const windowWidth = ref(window.innerWidth)
 
 const updateWindowWidth = () => {
@@ -174,6 +185,7 @@ onMounted(() => {
 onUnmounted(() => {
   window.removeEventListener('resize', updateWindowWidth)
 })
+
 
 </script>
 
@@ -202,8 +214,9 @@ onUnmounted(() => {
         </div>
       </template>
     </StormModal>
-    <StormNav />
-    <StormTable @row-clicked="handleDisplayModal" :table-data="formattedData" :mobile-data="mobileData" :table-headers="formattedHeaders" />
+    <StormNav v-model="searchTerm" />
+    <h1>{{ searchTerm }}</h1>
+    <StormTable @row-clicked="handleDisplayModal" :table-data="filteredData" :mobile-data="filteredData" :table-headers="formattedHeaders" />
   </div>
 
 </template>
