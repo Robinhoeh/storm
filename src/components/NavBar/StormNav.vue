@@ -4,6 +4,7 @@ import IconStormHamburger from '../icons/IconHamburger.vue';
 import IconGear from '../icons/IconGear.vue';
 import IconUser from '../icons/IconUser.vue';
 import IconNotification from '../icons/IconNotification.vue';
+import IconSearch from '../icons/IconSearch.vue';
 </script>
 
 <template>
@@ -14,7 +15,10 @@ import IconNotification from '../icons/IconNotification.vue';
     </div>
     <div class="nav-actions">
       <form class="search-form" @submit.prevent="">
+        <!-- <div class="search-container"> -->
+        <IconSearch class="search-icon" />
         <input class="search-input" type='text' placeholder="Search">
+        <!-- </div> -->
         <button class="button">Search</button>
       </form>
       <div class="nav-actions-icons">
@@ -37,7 +41,8 @@ import IconNotification from '../icons/IconNotification.vue';
   @media screen and (min-width: 992px) {
     flex-direction: row;
     justify-content: space-between;
-    max-width: 1184px;
+    max-width: 1440px;
+    margin-bottom: 76px;
   }
 
   .nav-menu {
@@ -47,8 +52,17 @@ import IconNotification from '../icons/IconNotification.vue';
     margin-bottom: 16px;
 
     @media screen and (min-width: 992px) {
-      margin-bottom: 0;
       margin-right: 25px;
+      margin-bottom: 0;
+    }
+  }
+
+  .nav-actions {
+    margin-bottom: 18px;
+
+    @media screen and (min-width: 992px) {
+      margin-bottom: 0;
+
     }
   }
 
@@ -86,6 +100,7 @@ import IconNotification from '../icons/IconNotification.vue';
       line-height: $line-height-sm;
       font-family: $secondary-font;
       margin: 0;
+      min-width: 85px;
     }
   }
 
@@ -96,17 +111,27 @@ import IconNotification from '../icons/IconNotification.vue';
   }
 
   .search-form {
+    position: relative;
     display: flex;
     justify-content: space-between;
-    width: auto;
+    width: 100%;
+    font-family: $primary-font;
+
+    .search-icon {
+      position: absolute;
+      top: 50%;
+      left: 16px;
+      transform: translateY(-58%);
+    }
 
 
     // TODO: fix input sizing
     .search-input {
-      padding: 10px 0 10px 16px;
+      padding: 12px 0 12px 48px;
+      width: 100%;
       min-width: 100px;
-      width: 220px;
-      border-radius: 8px;
+      max-width: 220px;
+      border-radius: 0 8px 8px 0;
       border: none;
       border: 1px solid $input-border;
       margin-right: 25px;
@@ -114,13 +139,14 @@ import IconNotification from '../icons/IconNotification.vue';
       @media screen and (min-width: 992px) {
         margin-right: 16px;
         min-width: 155px;
-        width: 260px;
+        max-width: 210px;
       }
     }
 
 
     input::placeholder {
       color: $input-placeholder;
+      margin-left: 20px;
     }
 
     .button {

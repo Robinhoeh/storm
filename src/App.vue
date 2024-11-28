@@ -104,7 +104,7 @@ const formattedData = computed(() => {
         Status: item.quantity > 50 ? "In Stock" : "Out of Stock",
         Quantity: item.quantity,
         Product: `
-        <span>${item.product}</span>
+        <${item.product}
         ${item.serial}`,
         Prices: `$${item.total}`
       };
@@ -142,10 +142,6 @@ onUnmounted(() => {
   window.removeEventListener('resize', updateWindowWidth)
 })
 
-
-
-
-
 </script>
 
 <template>
@@ -163,7 +159,7 @@ onUnmounted(() => {
   flex-direction: column;
   align-items: center;
   height: 100vh;
-  margin: $layout-padding-mobile;
+  // margin: $layout-padding-mobile;
   width: auto;
   margin: 40px 25px 0 25px;
 

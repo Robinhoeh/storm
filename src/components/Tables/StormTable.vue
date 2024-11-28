@@ -1,4 +1,6 @@
 <script setup>
+import IconArrowDown from '../icons/IconArrowDown.vue';
+
 const props = defineProps({
   tableData: Array,
   tableHeaders: Array,
@@ -8,12 +10,17 @@ const props = defineProps({
 <template>
   <div class="table-category">
     <p>Products</p>
-    <span class="display-amount">10 of 10</span>
+    <span class="display-amount">10 of 10 results</span>
   </div>
   <table>
     <thead>
       <tr>
-        <th v-for="category in props.tableHeaders" :key="category" class="table-header">{{ category }}</th>
+        <th v-for="category in props.tableHeaders" :key="category" :data-type="category" class="table-header">
+          {{ category }}
+          <slot name="icon" v-if="category === 'Prices'">
+            <IconArrowDown />
+          </slot>
+        </th>
       </tr>
     </thead>
     <tbody>
@@ -30,12 +37,19 @@ const props = defineProps({
   justify-content: flex-start;
   align-items: center;
   width: 100%;
+  margin: 0 0 19px 0;
+
+  @media screen and (min-width: 992px) {
+    margin-bottom: 6px;
+
+  }
 
   p {
     font-family: $primary-font;
     font-weight: $font-weight-bold;
     font-size: $font-size-lg;
     line-height: $line-height-sm;
+    margin: 0;
     margin-right: 10px;
   }
 
@@ -57,33 +71,51 @@ table {
   width: 100%;
   border-collapse: separate;
 
+
+
   th {
     font-family: $primary-font;
     font-weight: $font-weight-bold;
-    font-size: $font-size-sm;
+    font-size: $font-size-lg;
     line-height: $line-height-sm;
     color: $primary-text-color;
     padding: 18px 16px;
     border-bottom: 1px solid $light-purple;
 
+    &[data-type="Prices"] {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+
     &:first-child {
-      text-align: left;
+      text-align: center;
+
+      @media screen and (min-width: 992px) {
+        text-align: left;
+      }
     }
 
     &:last-child {
-      border-left: 2px solid $light-purple;
+      border-left: 0px solid $light-purple;
+
+      @media screen and (min-width: 992px) {
+        border-left: 2px solid $light-purple;
+
+      }
     }
   }
 
   td {
     font-family: $primary-font;
     font-weight: $font-weight-normal;
-    font-size: $font-size-sm;
+    font-size: $font-size-md;
     line-height: $line-height-sm;
     color: $primary-text-color;
     padding: 18px 16px;
     text-align: center;
     border-bottom: 1px solid $light-purple;
+    border-left: 0px solid $light-purple;
 
     &:first-child {
       text-align: left;
@@ -94,8 +126,14 @@ table {
     }
 
     &:last-child {
-      text-align: right;
-      border-left: 2px solid $light-purple;
+      text-align: left;
+      border-left: 0px solid $light-purple;
+
+      @media screen and (min-width: 992px) {
+        text-align: right;
+        border-left: 2px solid $light-purple;
+
+      }
     }
   }
 
