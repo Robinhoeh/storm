@@ -228,20 +228,41 @@ onUnmounted(() => {
     margin: 0;
     margin-bottom: 16px;
 
+    @media screen and (min-width: 992px) {
+      margin: 0;
+    }
+
     svg {
       cursor: pointer;
     }
   }
 
   .modal-data {
+    @media screen and (min-width: 992px) {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+    }
+
     img {
       width: 100%;
       height: 100%;
       object-fit: cover;
       margin-bottom: 35px;
+
+      @media screen and (min-width: 992px) {
+        width: 50%;
+        margin-bottom: 0;
+        align-self: flex-start;
+        transform: translateY(60px);
+      }
     }
 
     .modal-data-text {
+      @media screen and (min-width: 992px) {
+        width: 50%;
+      }
+
       p {
         font-family: $primary-font;
         font-weight: $font-weight-normal;
@@ -250,7 +271,10 @@ onUnmounted(() => {
         margin-bottom: 16px;
         line-height: 34px;
 
-
+        @media screen {
+          font-size: $font-size-sm;
+          line-height: $line-height-lg;
+        }
       }
 
       ul {

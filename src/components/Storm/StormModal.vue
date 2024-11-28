@@ -38,24 +38,40 @@ defineEmits(['closeModal']);
   left: 0;
   width: 100%;
   height: 100%;
-  background-color: $mask-color;
   background-color: white;
   display: flex;
   justify-content: center;
   align-items: flex-start;
-  border: 1px dotted red;
-  // display: none;
+
+  @media screen and (min-width: 992px) {
+    background-color: $mask-color;
+    top: 0;
+  }
 
   .modal-content {
     width: auto;
     min-width: 291px;
     max-width: 600px;
     padding: 0 16px 0 40px;
+    background: white;
+
+    @media screen and (min-width: 992px) {
+      padding: 40px;
+      border-radius: 8px;
+      margin: 204px 0;
+    }
 
     .modal-header {
       margin-bottom: 40px;
+    }
 
-
+    .modal-body {
+      @media screen and (min-width: 992px) {
+        display: flex;
+        justify-content: space-between;
+        align-items: flex-start;
+        padding: 0 40px;
+      }
     }
   }
 }
