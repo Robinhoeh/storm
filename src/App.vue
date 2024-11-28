@@ -234,8 +234,14 @@ onUnmounted(() => {
     margin: 0;
     margin-bottom: 16px;
 
+
+
     @media screen and (min-width: 992px) {
       margin: 0;
+
+      h3 {
+        margin: 0;
+      }
     }
 
     svg {
