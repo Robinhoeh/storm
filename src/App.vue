@@ -93,10 +93,10 @@ const tableData = [
 const formattedData = computed(() => {
   return tableData.map((item) => {
     return {
-      ID: item.id,
-      Status: item.quantity,
-      Quantity: item.quantity,
-      Product: {
+      id: item.id,
+      status: item.quantity,
+      quantity: item.quantity,
+      product: {
         prod: item.product,
         serial: item.serial,
       },
@@ -108,7 +108,7 @@ const formattedData = computed(() => {
 const mobileData = computed(() => {
   return tableData.map((item) => {
     return {
-      Product: {
+      product: {
         prod: item.product,
         serial: item.serial,
         quantity: item.quantity

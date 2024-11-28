@@ -16,6 +16,11 @@ const updateWindowWidth = () => {
     windowWidth.value = window.innerWidth
 }
 
+const handleRowClick = (id) => {
+    console.log('Row clicked');
+    console.log(id);
+}
+
 onMounted(() => {
     window.addEventListener('resize', updateWindowWidth)
 })
@@ -42,14 +47,14 @@ onUnmounted(() => {
             </tr>
         </thead>
         <tbody>
-            <tr v-for="row in windowWidth >= 992 ? tableData : mobileData" :key="row.id">
-                <td v-for="key in Object.keys(windowWidth >= 992 ? tableData[0] : mobileData[0])" :key="key" :data-type="key" :class="{ 'product': windowWidth < 992 && key === 'Product' }">
-                    <template v-if="key === 'Product'">
+            <tr @click="handleRowClick(row.id)" v-for="row in windowWidth >= 992 ? tableData : mobileData" :key="row.id">
+                <td v-for="key in Object.keys(windowWidth >= 992 ? tableData[0] : mobileData[0])" :key="key" :data-type="key" :class="{ 'product': windowWidth < 992 && key === 'product' }">
+                    <template v-if="key === 'product'">
                         <p class="product-data">{{ row[key].prod }}</p>
                         <span class="product-meta-data">{{ row[key].serial }} </span>
                         <span class="product-meta-data">{{ windowWidth >= 992 ? row[key].quantity : ' - Qty: ' + row[key].quantity }}</span>
                     </template>
-                    <template v-else-if="key === 'Status'">
+                    <template v-else-if="key === 'status'">
                         <StormPill :title="key" :status="row[key]" />
                     </template>
                     <template v-else>
@@ -150,7 +155,7 @@ table {
             text-align: left;
         }
 
-        &[data-type="Product"] {
+        &[data-type="product"] {
             text-align: left;
         }
 

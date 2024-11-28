@@ -6,6 +6,8 @@ const props = defineProps({
   status: Number,
 })
 
+defineEmits(['selected']);
+
 const statusMap = {
   'light-red': (status) => status < 50,
   'light-orange': (status) => status < 100,
@@ -13,14 +15,18 @@ const statusMap = {
   'light-purple': (status) => status >= 150,
 };
 
-const dynamicBackground = computed(() => {
+const dynamicStyles = computed(() => {
   return Object.keys(statusMap).find(key => statusMap[key](props.status));
+});
+
+const selectedPill = computed(() => {
+  return props.selected ? 'selected' : '';
 });
 
 </script>
 
 <template>
-  <div class="pill" :class="dynamicBackground">
+  <div class="pill" :class="[dynamicStyles, selectedPill]">
     {{ props.title }}
   </div>
 </template>
