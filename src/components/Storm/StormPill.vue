@@ -15,7 +15,6 @@ const statusMap = {
 
 const dynamicBackground = computed(() => {
   return Object.keys(statusMap).find(key => statusMap[key](props.status));
-
 });
 
 </script>
