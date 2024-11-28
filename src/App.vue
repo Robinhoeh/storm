@@ -103,7 +103,7 @@ const formattedData = computed(() => {
         serial: item.serial,
         image: item.image
       },
-      Prices: item.total
+      prices: item.total
     };
   });
 });
@@ -149,20 +149,17 @@ const mockFeatureDescription = "The new MacBook Pro features a stunning 16-inch 
 
 const displayModal = ref(false);
 const handleCloseModal = () => {
-  console.log("Closing modal");
   displayModal.value = false;
 };
 
 const selectedRow = ref(null);
-
 const handleDisplayModal = (row) => {
-  console.log(row);
   selectedRow.value = row;
   displayModal.value = true
 };
 
-const searchTerm = ref('')
 
+const searchTerm = ref('')
 const filteredData = computed(() => {
   const data = windowWidth.value < 992 ? mobileData.value : formattedData.value
   return data.filter((item) => {
@@ -170,6 +167,13 @@ const filteredData = computed(() => {
   })
 })
 
+const handleHeaderClick = (e) => {
+  console.log(e)
+  // sort prices form highest to lowest
+  if (e === 'Prices') {
+    formattedData.value = formattedData.value.sort((a, b) => b.prices - a.prices)
+  }
+}
 
 
 const windowWidth = ref(window.innerWidth)
@@ -185,8 +189,6 @@ onMounted(() => {
 onUnmounted(() => {
   window.removeEventListener('resize', updateWindowWidth)
 })
-
-
 </script>
 
 <template>
@@ -216,7 +218,7 @@ onUnmounted(() => {
     </StormModal>
     <StormNav v-model="searchTerm" />
     <h1>{{ searchTerm }}</h1>
-    <StormTable @row-clicked="handleDisplayModal" :table-data="filteredData" :mobile-data="filteredData" :table-headers="formattedHeaders" />
+    <StormTable @row-clicked="handleDisplayModal" @sort-list="handleHeaderClick" :table-data="filteredData" :mobile-data="filteredData" :table-headers="formattedHeaders" />
   </div>
 
 </template>

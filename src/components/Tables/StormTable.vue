@@ -9,7 +9,7 @@ const props = defineProps({
     tableHeaders: Array,
 });
 
-const emit = defineEmits(['row-clicked']);
+const emit = defineEmits(['row-clicked', 'sort-list']);
 
 
 const windowWidth = ref(window.innerWidth)
@@ -19,11 +19,15 @@ const updateWindowWidth = () => {
 
 const handleRowClick = (row) => {
     emit('row-clicked', row);
-    console.log('Row clicked');
-    if (windowWidth.value < 992) {
-        console.log(row.product.id);
-    } else {
-        console.log(row.id);
+}
+
+const handleHeaderClick = (e) => {
+    if (e.target.dataset.type === 'Prices') {
+        console.log('Prices clicked')
+        // sort prices from lowest to highest
+        // props.tableData.sort((a, b) => a.prices - b.prices)
+        // emit this
+        emit('sort-list', e.target.dataset.type)
     }
 }
 
@@ -43,7 +47,7 @@ onUnmounted(() => {
     <table>
         <thead>
             <tr>
-                <th v-for="category in props.tableHeaders" :key="category" :data-type="category" class="table-header">
+                <th @click="handleHeaderClick" v-for="category in props.tableHeaders" :key="category" :data-type="category" class="table-header">
                     {{ category }}
                     <slot name="icon" v-if="category === 'Prices'">
                         <IconArrowDown />
