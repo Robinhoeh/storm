@@ -114,7 +114,8 @@ const mobileData = computed(() => {
         prod: item.product,
         serial: item.serial,
         quantity: item.quantity,
-        id: item.id
+        id: item.id,
+        image: item.image
       }
     };
   });
@@ -151,9 +152,12 @@ const handleCloseModal = () => {
   displayModal.value = false;
 };
 
+const selectedRow = ref(null);
+
 const handleDisplayModal = (row) => {
-  displayModal.value = true;
   console.log(row);
+  selectedRow.value = row;
+  displayModal.value = true
 };
 
 const windowWidth = ref(window.innerWidth)
@@ -177,13 +181,13 @@ onUnmounted(() => {
     <StormModal :display-modal="displayModal" @close-modal="handleCloseModal">
       <template #title>
         <div class="modal-title">
-          <h3>{{ tableData[0].product }}</h3>
+          <h3>{{ selectedRow.product?.prod }}</h3>
           <IconClose @click="handleCloseModal" />
         </div>
       </template>
       <template #body>
         <div class="modal-data">
-          <img :src='tableData[0].image' :alt='tableData[0].product'>
+          <img :src='selectedRow.product?.image' :alt='selectedRow.product?.prod'>
           <div class="modal-data-text">
             <p>Key Features</p>
             <ul>

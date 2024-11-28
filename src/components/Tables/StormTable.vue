@@ -13,12 +13,9 @@ const emit = defineEmits(['row-clicked']);
 
 
 const windowWidth = ref(window.innerWidth)
-
 const updateWindowWidth = () => {
     windowWidth.value = window.innerWidth
 }
-
-
 
 const handleRowClick = (row) => {
     emit('row-clicked', row);
@@ -33,7 +30,6 @@ const handleRowClick = (row) => {
 onMounted(() => {
     window.addEventListener('resize', updateWindowWidth)
 })
-
 onUnmounted(() => {
     window.removeEventListener('resize', updateWindowWidth)
 })
