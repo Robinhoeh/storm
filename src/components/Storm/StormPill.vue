@@ -6,17 +6,18 @@ const props = defineProps({
   status: Number,
 })
 
+const statusMap = {
+  'light-red': (status) => status < 50,
+  'light-orange': (status) => status < 100,
+  'light-green': (status) => status < 150,
+  'light-purple': (status) => status >= 150,
+};
+
 const dynamicBackground = computed(() => {
-  if (props.status < 50) {
-    return 'light-red';
-  } else if (props.status < 100) {
-    return 'light-orange';
-  } else if (props.status < 150) {
-    return 'light-green';
-  } else {
-    return 'light-purple';
-  }
+  return Object.keys(statusMap).find(key => statusMap[key](props.status));
+
 });
+
 </script>
 
 <template>
