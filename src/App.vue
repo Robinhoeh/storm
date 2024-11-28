@@ -94,7 +94,7 @@ const formattedData = computed(() => {
   return tableData.map((item) => {
     return {
       ID: item.id,
-      Status: item.quantity > 50 ? "In Stock" : "Out of Stock",
+      Status: item.quantity,
       Quantity: item.quantity,
       Product: {
         prod: item.product,

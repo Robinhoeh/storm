@@ -1,6 +1,7 @@
 <script setup>
 import { ref, onMounted, onUnmounted } from 'vue';
 import IconArrowDown from '../icons/IconArrowDown.vue';
+import StormPill from '../Storm/StormPill.vue';
 
 const props = defineProps({
     tableData: Array,
@@ -47,6 +48,9 @@ onUnmounted(() => {
                         <p class="product-data">{{ row[key].prod }}</p>
                         <span class="product-meta-data">{{ row[key].serial }} </span>
                         <span class="product-meta-data">{{ windowWidth >= 992 ? row[key].quantity : ' - Qty: ' + row[key].quantity }}</span>
+                    </template>
+                    <template v-else-if="key === 'Status'">
+                        <StormPill :title="key" :status="row[key]" />
                     </template>
                     <template v-else>
                         {{ row[key] }}
