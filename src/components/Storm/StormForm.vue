@@ -1,0 +1,69 @@
+<script setup>
+import IconSearch from '../icons/IconSearch.vue';
+const searchModel = defineModel()
+</script>
+
+<template>
+  <form class="search-form" @submit.prevent="">
+    <IconSearch class="search-icon" />
+    <input v-model="searchModel" class="search-input" type='text' placeholder="Search">
+    <button class="button">Search</button>
+  </form>
+</template>
+
+<style lang="scss" scoped>
+.search-form {
+  position: relative;
+  display: flex;
+  justify-content: space-between;
+  width: 100%;
+  font-family: $primary-font;
+
+  .search-icon {
+    position: absolute;
+    top: 50%;
+    left: 16px;
+    transform: translateY(-58%);
+  }
+
+  .search-input {
+    padding: 12px 0 12px 48px;
+    width: 100%;
+    min-width: 100px;
+    max-width: 220px;
+    border-radius: 0 8px 8px 0;
+    border: none;
+    border: 1px solid $input-border;
+    margin-right: 25px;
+
+    @media screen and (min-width: 992px) {
+      margin-right: 16px;
+      min-width: 155px;
+      max-width: 210px;
+    }
+  }
+
+  input::placeholder {
+    color: $input-placeholder;
+    margin-left: 20px;
+  }
+
+  .button {
+    border: none;
+    border-radius: 4px;
+    color: $tertiary-text-color;
+    font-size: $font-size-md;
+    font-weight: $font-weight-medium;
+    line-height: $line-height-sm;
+    font-family: $secondary-font;
+    background-color: $color-primary;
+    padding: 12px 24px;
+    width: 97px;
+
+    @media screen and (min-width: 1025px) {
+      margin-right: 30px;
+
+    }
+  }
+}
+</style>
