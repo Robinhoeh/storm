@@ -22,6 +22,7 @@ defineProps({
   align-items: flex-start;
   justify-content: center;
   position: relative;
+  z-index: 9999;
 
   .close-icon {
     position: absolute;
