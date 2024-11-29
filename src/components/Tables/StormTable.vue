@@ -6,6 +6,7 @@ import StormPill from '../Storm/StormPill.vue';
 const props = defineProps({
   tableData: Array,
   tableHeaders: Array,
+  tableItems: Number
 });
 
 const emit = defineEmits(['row-clicked', 'sort-list']);
@@ -24,7 +25,7 @@ const handleHeaderClick = (e) => {
 <template>
   <div class="table-category">
     <p>Products</p>
-    <span class="display-amount">10 of 10 results</span>
+    <span class="display-amount">{{ props.tableItems }} of {{ props.tableItems }} results</span>
   </div>
   <table>
     <thead>

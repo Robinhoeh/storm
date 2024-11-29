@@ -8,6 +8,8 @@ import IconClose from './components/icons/IconClose.vue';
 
 const { windowWidth } = useWidth()
 
+const availableItems = computed(() => tableData.length);
+
 const tableData = [
   {
     "product": "Macbook Pro 16 inch (2020 ) For Sale",
@@ -163,18 +165,13 @@ const handleDisplayModal = (row) => {
   displayModal.value = true
 };
 
-const handleFormSubmit = (searchTerm) => {
-  console.log(searchTerm)
-}
 
-const searchTerm = ref('')
-console.log(searchTerm.value, 'app')
-const filteredData = computed(() => {
-  const data = windowWidth.value < 992 ? mobileData.value : formattedData.value
-  return data.filter((item) => {
-    return item.product.prod.toLowerCase().includes(searchTerm.value.toLowerCase())
+const searchTerm = ref()
+const handleFormSubmit = () => {
+  displayedData.value = tableData.filter((item) => {
+    return item.product.toLowerCase().includes(searchTerm.value.toLowerCase())
   })
-})
+}
 
 const handleHeaderClick = (header) => {
   if (header === 'Quantity') {
@@ -194,8 +191,6 @@ const handleHeaderClick = (header) => {
     displayedData.value = [...displayedData.value].sort((a, b) => isAscending ? b.total - a.total : a.total - b.total);
   }
 }
-
-
 </script>
 
 <template>
@@ -224,8 +219,7 @@ const handleHeaderClick = (header) => {
       </template>
     </StormModal>
     <StormNav v-model="searchTerm" @submit="handleFormSubmit" />
-    {{ searchTerm }}
-    <StormTable @row-clicked="handleDisplayModal" @sort-list="handleHeaderClick" :table-data="filteredData" :table-headers="formattedHeaders" />
+    <StormTable @row-clicked="handleDisplayModal" @sort-list="handleHeaderClick" :table-data="windowWidth < 992 ? mobileData : formattedData" :table-headers="formattedHeaders" :table-items="availableItems" />
   </div>
 
 </template>
