@@ -64,7 +64,7 @@ const closeMobileMenu = () => {
   @media screen and (min-width: 992px) {
     flex-direction: row;
     justify-content: space-between;
-    max-width: 1440px;
+    max-width: $max-window-width;
     margin-bottom: 76px;
   }
 
