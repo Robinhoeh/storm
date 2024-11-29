@@ -8,27 +8,25 @@ defineEmits(['closeModal']);
 </script>
 
 <template>
-  <Transition>
-    <div v-if="props.displayModal" class="modal">
-      <div class="modal-mask">
-        <div class="modal-content">
-          <div class="modal-header">
-            <div class="modal-title" :title="props.title" />
-            <slot name="title" />
-          </div>
-          <div class="modal-body">
-            <slot name="body" />
-          </div>
-          <div class="modal-footer">
-            <button class="close-button" @click="$emit('closeModal')">Close</button>
-          </div>
+  <Transition name="modal">
+    <div v-if="props.displayModal" class="modal-mask">
+
+      <div class="modal-content">
+        <div class="modal-header">
+          <div class="modal-title" :title="props.title" />
+          <slot name="title" />
+        </div>
+        <div class="modal-body">
+          <slot name="body" />
+        </div>
+        <div class="modal-footer">
+          <button class="close-button" @click="$emit('closeModal')">Close</button>
         </div>
       </div>
     </div>
+
   </Transition>
 </template>
-
-
 
 <style lang="scss" scoped>
 .modal-mask {
@@ -44,6 +42,7 @@ defineEmits(['closeModal']);
   justify-content: center;
   align-items: flex-start;
   overflow-y: auto;
+  transition: transform 0.3s ease;
 
   @media screen and (min-width: 992px) {
     background-color: $mask-color;
@@ -57,6 +56,7 @@ defineEmits(['closeModal']);
     max-width: 684px;
     padding: 0 16px 0 40px;
     background: white;
+    transition: transform 0.3s ease;
 
     @media screen and (min-width: 992px) {
       padding: 40px;
@@ -77,5 +77,18 @@ defineEmits(['closeModal']);
       }
     }
   }
+}
+
+.modal-enter-from {
+  opacity: 0;
+}
+
+.modal-leave-to {
+  opacity: 0;
+}
+
+.modal-enter-from .modal-content,
+.modal-leave-to .modal-content {
+  transform: scale(1.1);
 }
 </style>

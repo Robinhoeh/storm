@@ -11,7 +11,6 @@ const props = defineProps({
 
 const emit = defineEmits(['row-clicked', 'sort-list']);
 
-
 const windowWidth = ref(window.innerWidth)
 const updateWindowWidth = () => {
     windowWidth.value = window.innerWidth
