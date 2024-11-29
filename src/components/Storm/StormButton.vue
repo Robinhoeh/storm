@@ -1,5 +1,7 @@
 <script setup>
-import { defineProps, computed } from 'vue';
+import { defineProps, defineEmits, computed } from 'vue';
+
+const emit = defineEmits(['hanldeClick']);
 const props = defineProps({
   content: String,
   role: String
@@ -18,7 +20,7 @@ const backgroundStyles = computed(() => {
 </script>
 
 <template>
-  <button class="button" :class="backgroundStyles">
+  <button class="button" :class="backgroundStyles" @click="emit('handleClick')">
     {{ props.content }}
   </button>
 </template>
@@ -40,7 +42,6 @@ const backgroundStyles = computed(() => {
   @media screen and (min-width: 1025px) {
     margin-right: 30px;
   }
-
 }
 
 .primary {
@@ -57,6 +58,7 @@ const backgroundStyles = computed(() => {
 
   &:hover {
     background-color: darken($utility-color, 8%);
+    color: $color-primary;
   }
 }
 </style>

@@ -7,7 +7,6 @@ import StormModal from './components/Storm/StormModal.vue';
 import IconClose from './components/icons/IconClose.vue';
 
 const { windowWidth } = useWidth()
-console.log(windowWidth)
 
 const tableData = [
   {
@@ -164,8 +163,12 @@ const handleDisplayModal = (row) => {
   displayModal.value = true
 };
 
+const handleFormSubmit = (searchTerm) => {
+  console.log(searchTerm)
+}
 
 const searchTerm = ref('')
+console.log(searchTerm.value, 'app')
 const filteredData = computed(() => {
   const data = windowWidth.value < 992 ? mobileData.value : formattedData.value
   return data.filter((item) => {
@@ -220,7 +223,7 @@ const handleHeaderClick = (header) => {
         </div>
       </template>
     </StormModal>
-    <StormNav v-model="searchTerm" />
+    <StormNav v-model="searchTerm" @submit="handleFormSubmit" />
     <StormTable @row-clicked="handleDisplayModal" @sort-list="handleHeaderClick" :table-data="filteredData" :mobile-data="filteredData" :table-headers="formattedHeaders" />
   </div>
 

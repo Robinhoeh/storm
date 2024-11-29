@@ -5,6 +5,8 @@ import IconGear from '../icons/IconGear.vue';
 import IconUser from '../icons/IconUser.vue';
 import IconNotification from '../icons/IconNotification.vue';
 import StormForm from '../Storm/StormForm.vue';
+const emit = defineEmits(['submit'])
+
 const searchModel = defineModel()
 </script>
 
@@ -15,7 +17,7 @@ const searchModel = defineModel()
       <IconStormHamburger class="hamburger" />
     </div>
     <div class="nav-actions">
-      <StormForm v-model="searchModel" />
+      <StormForm v-model="searchModel" @submit="emit('submit')" />
       <div class="nav-actions-icons">
         <IconGear class="nav-icon" />
         <IconNotification class="nav-icon" />
@@ -58,7 +60,6 @@ const searchModel = defineModel()
     @media screen and (min-width: 992px) {
       margin-bottom: 0;
       margin-right: 16px;
-
     }
   }
 

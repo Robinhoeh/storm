@@ -1,14 +1,20 @@
 <script setup>
 import IconSearch from '../icons/IconSearch.vue';
 import StormButton from '../Storm/StormButton.vue';
+
+const emit = defineEmits(['submit'])
 const searchModel = defineModel()
+const handleSubmit = () => {
+  console.log(searchModel.value)
+  emit('submit', searchModel.value)
+}
 </script>
 
 <template>
-  <form class="form" @submit.prevent="">
+  <form class="form" @submit.prevent="handleSubmit">
     <IconSearch class="search-icon" />
     <input v-model="searchModel" class="search-input" type='text' placeholder="Search">
-    <StormButton content="Search" role="primary"></StormButton>
+    <StormButton content="Search" role='primary' @handle-click="handleSubmit" />
   </form>
 </template>
 
