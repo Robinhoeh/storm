@@ -224,7 +224,8 @@ const handleHeaderClick = (header) => {
       </template>
     </StormModal>
     <StormNav v-model="searchTerm" @submit="handleFormSubmit" />
-    <StormTable @row-clicked="handleDisplayModal" @sort-list="handleHeaderClick" :table-data="filteredData" :mobile-data="filteredData" :table-headers="formattedHeaders" />
+    {{ searchTerm }}
+    <StormTable @row-clicked="handleDisplayModal" @sort-list="handleHeaderClick" :table-data="filteredData" :table-headers="formattedHeaders" />
   </div>
 
 </template>
