@@ -92,8 +92,10 @@ const tableData = [
   }
 ];
 
+const displayedData = ref([...tableData]);
+
 const formattedData = computed(() => {
-  return tableData.map((item) => {
+  return displayedData.value.map((item) => {
     return {
       id: item.id,
       status: item.quantity,
@@ -103,13 +105,13 @@ const formattedData = computed(() => {
         serial: item.serial,
         image: item.image
       },
-      prices: item.total
+      price: item.total
     };
   });
 });
 
 const mobileData = computed(() => {
-  return tableData.map((item) => {
+  return displayedData.value.map((item) => {
     return {
       product: {
         prod: item.product,
@@ -167,14 +169,24 @@ const filteredData = computed(() => {
   })
 })
 
-const handleHeaderClick = (e) => {
-  console.log(e)
-  // sort prices form highest to lowest
-  if (e === 'Prices') {
-    formattedData.value = formattedData.value.sort((a, b) => b.prices - a.prices)
+const handleHeaderClick = (header) => {
+  if (header === 'Quantity') {
+    const isAscending = displayedData.value[0].quantity < displayedData.value[displayedData.value.length - 1].quantity;
+    displayedData.value = [...displayedData.value].sort((a, b) => isAscending ? b.quantity - a.quantity : a.quantity - b.quantity);
+  }
+
+  if (header === 'Product Name') {
+    const isAscending = displayedData.value[0].product < displayedData.value[displayedData.value.length - 1].product;
+    displayedData.value = [...displayedData.value].sort((a, b) => isAscending ?
+      b.product.toLowerCase().localeCompare(a.product.toLowerCase()) :
+      a.product.toLowerCase().localeCompare(b.product.toLowerCase()));
+  }
+
+  if (header === 'Prices') {
+    const isAscending = displayedData.value[0].total < displayedData.value[displayedData.value.length - 1].total;
+    displayedData.value = [...displayedData.value].sort((a, b) => isAscending ? b.total - a.total : a.total - b.total);
   }
 }
-
 
 const windowWidth = ref(window.innerWidth)
 
@@ -217,7 +229,6 @@ onUnmounted(() => {
       </template>
     </StormModal>
     <StormNav v-model="searchTerm" />
-    <h1>{{ searchTerm }}</h1>
     <StormTable @row-clicked="handleDisplayModal" @sort-list="handleHeaderClick" :table-data="filteredData" :mobile-data="filteredData" :table-headers="formattedHeaders" />
   </div>
 

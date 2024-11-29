@@ -22,13 +22,7 @@ const handleRowClick = (row) => {
 }
 
 const handleHeaderClick = (e) => {
-    if (e.target.dataset.type === 'Prices') {
-        console.log('Prices clicked')
-        // sort prices from lowest to highest
-        // props.tableData.sort((a, b) => a.prices - b.prices)
-        // emit this
-        emit('sort-list', e.target.dataset.type)
-    }
+    emit('sort-list', e.target.dataset.type)
 }
 
 onMounted(() => {
