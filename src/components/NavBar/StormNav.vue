@@ -1,20 +1,34 @@
 <script setup>
+import { defineEmits, defineModel, ref } from 'vue';
+import { useWidth } from '@/composables/storm/useWidth';
 import IconStormLogo from '../icons/IconStormLogo.vue';
 import IconStormHamburger from '../icons/IconHamburger.vue';
 import IconGear from '../icons/IconGear.vue';
 import IconUser from '../icons/IconUser.vue';
 import IconNotification from '../icons/IconNotification.vue';
 import StormForm from '../Storm/StormForm.vue';
-const emit = defineEmits(['submit'])
+import StormHiddenNav from './StormHiddenNav.vue';
 
+const emit = defineEmits(['submit', 'close-menu'])
 const searchModel = defineModel()
+
+const { windowWidth } = useWidth()
+
+const isMobileMenuOpen = ref(false)
+const toggleMobileMenu = () => {
+  isMobileMenuOpen.value = !isMobileMenuOpen.value
+}
+
+const closeMobileMenu = () => {
+  isMobileMenuOpen.value = false
+}
 </script>
 
 <template>
   <nav class="storm-nav">
     <div class="nav-menu">
       <IconStormLogo />
-      <IconStormHamburger class="hamburger" />
+      <IconStormHamburger class="hamburger" @click="toggleMobileMenu" />
     </div>
     <div class="nav-actions">
       <StormForm v-model="searchModel" @submit="emit('submit')" @clear-data="emit('clear-data')" />
@@ -24,6 +38,18 @@ const searchModel = defineModel()
         <IconUser />
       </div>
       <p class="user-name">Adriana Arias</p>
+      <StormHiddenNav v-if="windowWidth < 992" @close-menu="closeMobileMenu" :display-mobile-menu="isMobileMenuOpen">
+        <template #hamburger-content>
+          <div class="mobile-nav-cont">
+            <div class="">
+              <IconGear class="nav-icon" />
+              <IconNotification class="nav-icon" />
+              <IconUser />
+            </div>
+            <p class="user-name">Adriana Arias</p>
+          </div>
+        </template>
+      </StormHiddenNav>
     </div>
 
   </nav>
@@ -52,6 +78,10 @@ const searchModel = defineModel()
       margin-right: 25px;
       margin-bottom: 0;
     }
+
+    .hamburger {
+      cursor: pointer;
+    }
   }
 
   .nav-actions {
@@ -74,7 +104,25 @@ const searchModel = defineModel()
   }
 
   .user-name {
-    display: none
+    display: none;
+    color: $color-primary;
+    font-size: $font-size-md;
+    font-weight: $font-weight-normal;
+    line-height: $line-height-sm;
+    font-family: $secondary-font;
+    margin: 0;
+    min-width: 85px;
+
+  }
+
+  .mobile-nav-cont {
+    display: flex;
+    align-items: center;
+    margin-top: 100px;
+
+    .user-name {
+      display: flex
+    }
   }
 
   @media screen and (min-width: 992px) {
@@ -91,13 +139,6 @@ const searchModel = defineModel()
 
     .user-name {
       display: block;
-      color: $color-primary;
-      font-size: $font-size-md;
-      font-weight: $font-weight-normal;
-      line-height: $line-height-sm;
-      font-family: $secondary-font;
-      margin: 0;
-      min-width: 85px;
     }
   }
 

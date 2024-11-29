@@ -6,7 +6,6 @@ import StormButton from '../Storm/StormButton.vue';
 const emit = defineEmits(['submit', 'clear-data'])
 const searchModel = defineModel()
 const handleSubmit = () => {
-  console.log(searchModel.value)
   emit('submit', searchModel.value)
 }
 </script>

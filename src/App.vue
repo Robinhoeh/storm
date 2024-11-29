@@ -177,6 +177,11 @@ const clearData = () => {
   displayedData.value = [...tableData]
 }
 
+const displayMobileMenu = ref(false)
+const closeMenu = () => {
+  displayMobileMenu.value = false
+}
+
 const handleHeaderClick = (header) => {
   if (header === 'Quantity') {
     const isAscending = displayedData.value[0].quantity < displayedData.value[displayedData.value.length - 1].quantity;
@@ -222,7 +227,7 @@ const handleHeaderClick = (header) => {
         </div>
       </template>
     </StormModal>
-    <StormNav v-model="searchTerm" @submit="handleFormSubmit" @clear-data="clearData" />
+    <StormNav v-model="searchTerm" @submit="handleFormSubmit" @clear-data="clearData" @close-menu="closeMenu" />
     <StormTable @row-clicked="handleDisplayModal" @sort-list="handleHeaderClick" :table-data="windowWidth < 992 ? mobileData : formattedData" :table-headers="formattedHeaders" :table-items="availableItems" />
   </div>
 
@@ -235,7 +240,6 @@ const handleHeaderClick = (header) => {
   flex-direction: column;
   align-items: center;
   height: 100vh;
-  // margin: $layout-padding-mobile;
   width: auto;
   margin: 40px 25px 0 25px;
 
