@@ -9,7 +9,7 @@ import IconNotification from '../icons/IconNotification.vue';
 import StormForm from '../Storm/StormForm.vue';
 import StormHiddenNav from './StormHiddenNav.vue';
 
-const emit = defineEmits(['submit', 'close-menu'])
+const emit = defineEmits(['submit', 'clear-data'])
 const searchModel = defineModel()
 
 const { windowWidth } = useWidth()
