@@ -95,19 +95,19 @@ const closeMenu = () => {
 
 const handleHeaderClick = (header) => {
   if (header === 'Quantity') {
-    const isAscending = displayedData.value[0].quantity < displayedData.value[displayedData.value.length - 1].quantity;
+    const isAscending = displayedData.value[0]?.quantity < displayedData.value[displayedData.value.length - 1].quantity;
     displayedData.value = [...displayedData.value].sort((a, b) => isAscending ? b.quantity - a.quantity : a.quantity - b.quantity);
   }
 
   if (header === 'Product Name') {
-    const isAscending = displayedData.value[0].product < displayedData.value[displayedData.value.length - 1].product;
+    const isAscending = displayedData.value[0]?.product < displayedData.value[displayedData.value.length - 1].product;
     displayedData.value = [...displayedData.value].sort((a, b) => isAscending ?
       b.product.toLowerCase().localeCompare(a.product.toLowerCase()) :
       a.product.toLowerCase().localeCompare(b.product.toLowerCase()));
   }
 
   if (header === 'Prices') {
-    const isAscending = displayedData.value[0].total < displayedData.value[displayedData.value.length - 1].total;
+    const isAscending = displayedData.value[0]?.total < displayedData.value[displayedData.value.length - 1].total;
     displayedData.value = [...displayedData.value].sort((a, b) => isAscending ? b.total - a.total : a.total - b.total);
   }
 }
