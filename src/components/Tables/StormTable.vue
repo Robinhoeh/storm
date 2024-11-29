@@ -40,7 +40,7 @@ const handleHeaderClick = (e) => {
     </thead>
     <tbody>
       <tr v-for="row in tableData" :key="row.id">
-        <td @click="handleRowClick(row)" v-for="key in Object.keys(tableData[0])" :key="key" :data-type="key" :class="{ 'product': windowWidth.value < 992 && key === 'product' }">
+        <td @click="handleRowClick(row)" v-for="key in Object.keys(tableData[0])" :key="key" :data-type="key" :class="{ 'product': windowWidth < 992 && key === 'product' }">
           <template v-if="key === 'product'">
             <p class="product-data">{{ row[key].prod }}</p>
             <span class="product-meta-data">{{ row[key].serial }} </span>
