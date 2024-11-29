@@ -1,9 +1,13 @@
 <script setup>
-import { computed, ref, onMounted, onUnmounted } from 'vue';
+import { computed, ref } from 'vue';
+import { useWidth } from './composables/storm/useWidth.js';
 import StormNav from './components/NavBar/StormNav.vue';
 import StormTable from './components/Tables/StormTable.vue';
 import StormModal from './components/Storm/StormModal.vue';
 import IconClose from './components/icons/IconClose.vue';
+
+const { windowWidth } = useWidth()
+console.log(windowWidth)
 
 const tableData = [
   {
@@ -188,19 +192,7 @@ const handleHeaderClick = (header) => {
   }
 }
 
-const windowWidth = ref(window.innerWidth)
 
-const updateWindowWidth = () => {
-  windowWidth.value = window.innerWidth
-}
-
-onMounted(() => {
-  window.addEventListener('resize', updateWindowWidth)
-})
-
-onUnmounted(() => {
-  window.removeEventListener('resize', updateWindowWidth)
-})
 </script>
 
 <template>
@@ -259,8 +251,6 @@ onUnmounted(() => {
     line-height: $line-height-lg;
     margin: 0;
     margin-bottom: 16px;
-
-
 
     @media screen and (min-width: 992px) {
       margin: 0;

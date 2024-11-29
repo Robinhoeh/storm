@@ -1,5 +1,5 @@
 <script setup>
-import { ref, onMounted, onUnmounted } from 'vue';
+import { useWidth } from '../../composables/storm/useWidth.js';
 import IconArrowDown from '../icons/IconArrowDown.vue';
 import StormPill from '../Storm/StormPill.vue';
 
@@ -11,10 +11,7 @@ const props = defineProps({
 
 const emit = defineEmits(['row-clicked', 'sort-list']);
 
-const windowWidth = ref(window.innerWidth)
-const updateWindowWidth = () => {
-    windowWidth.value = window.innerWidth
-}
+const { windowWidth } = useWidth()
 
 const handleRowClick = (row) => {
     emit('row-clicked', row);
@@ -23,13 +20,6 @@ const handleRowClick = (row) => {
 const handleHeaderClick = (e) => {
     emit('sort-list', e.target.dataset.type)
 }
-
-onMounted(() => {
-    window.addEventListener('resize', updateWindowWidth)
-})
-onUnmounted(() => {
-    window.removeEventListener('resize', updateWindowWidth)
-})
 </script>
 
 <template>
@@ -49,12 +39,12 @@ onUnmounted(() => {
             </tr>
         </thead>
         <tbody>
-            <tr v-for="row in windowWidth >= 992 ? tableData : mobileData" :key="row.id">
-                <td @click="handleRowClick(row)" v-for="key in Object.keys(windowWidth >= 992 ? tableData[0] : mobileData[0])" :key="key" :data-type="key" :class="{ 'product': windowWidth < 992 && key === 'product' }">
+            <tr v-for="row in windowWidth.value >= 992 ? tableData : mobileData" :key="row.id">
+                <td @click="handleRowClick(row)" v-for="key in Object.keys(windowWidth.value >= 992 ? tableData[0] : mobileData[0])" :key="key" :data-type="key" :class="{ 'product': windowWidth.value < 992 && key === 'product' }">
                     <template v-if="key === 'product'">
                         <p class="product-data">{{ row[key].prod }}</p>
                         <span class="product-meta-data">{{ row[key].serial }} </span>
-                        <span class="product-meta-data">{{ windowWidth >= 992 ? row[key].quantity : ' - Qty: ' + row[key].quantity }}</span>
+                        <span class="product-meta-data">{{ windowWidth <= 992 ? ' - Qty: ' + row[key].quantity : row.quantity }}</span>
                     </template>
                     <template v-else-if="key === 'status'">
                         <StormPill :title="key" :status="row[key]" />
