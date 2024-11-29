@@ -1,4 +1,5 @@
 <script setup>
+import StormButton from '../Storm/StormButton.vue';
 const props = defineProps({
   displayModal: Boolean,
   title: String
@@ -10,7 +11,6 @@ defineEmits(['closeModal']);
 <template>
   <Transition name="modal">
     <div v-if="props.displayModal" class="modal-mask">
-
       <div class="modal-content">
         <div class="modal-header">
           <div class="modal-title" :title="props.title" />
@@ -20,7 +20,7 @@ defineEmits(['closeModal']);
           <slot name="body" />
         </div>
         <div class="modal-footer">
-          <button class="close-button" @click="$emit('closeModal')">Close</button>
+          <StormButton content="Close" role='utility' @click="$emit('closeModal')" />
         </div>
       </div>
     </div>

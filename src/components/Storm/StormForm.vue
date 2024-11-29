@@ -1,18 +1,19 @@
 <script setup>
 import IconSearch from '../icons/IconSearch.vue';
+import StormButton from '../Storm/StormButton.vue';
 const searchModel = defineModel()
 </script>
 
 <template>
-  <form class="search-form" @submit.prevent="">
+  <form class="form" @submit.prevent="">
     <IconSearch class="search-icon" />
     <input v-model="searchModel" class="search-input" type='text' placeholder="Search">
-    <button class="button">Search</button>
+    <StormButton content="Search" role="primary"></StormButton>
   </form>
 </template>
 
 <style lang="scss" scoped>
-.search-form {
+.form {
   position: relative;
   display: flex;
   justify-content: space-between;
@@ -46,24 +47,6 @@ const searchModel = defineModel()
   input::placeholder {
     color: $input-placeholder;
     margin-left: 20px;
-  }
-
-  .button {
-    border: none;
-    border-radius: 4px;
-    color: $tertiary-text-color;
-    font-size: $font-size-md;
-    font-weight: $font-weight-medium;
-    line-height: $line-height-sm;
-    font-family: $secondary-font;
-    background-color: $color-primary;
-    padding: 12px 24px;
-    width: 97px;
-
-    @media screen and (min-width: 1025px) {
-      margin-right: 30px;
-
-    }
   }
 }
 </style>
