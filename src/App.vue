@@ -28,7 +28,6 @@ const formattedData = computed(() => {
     };
   });
 });
-
 const mobileData = computed(() => {
   return displayedData.value.map((item) => {
     return {
@@ -43,6 +42,7 @@ const mobileData = computed(() => {
   });
 });
 
+
 const tableHeaders = [
   "ID",
   "Status",
@@ -50,7 +50,6 @@ const tableHeaders = [
   "Product Name",
   "Prices"
 ];
-
 const formattedHeaders = computed(() => {
   if (windowWidth.value < 992) {
     return tableHeaders.filter((header) => header === "Product Name");
@@ -65,7 +64,6 @@ const mockFeatures = [
   "2.6GHz 6-core 9th-generation Intel Core i7 processor",
   "512GB SSD storage",
 ];
-
 const mockFeatureDescription = "The new MacBook Pro features a stunning 16-inch Retina display — the largest Retina display ever in a Mac notebook. It produces 500 nits of brightness for spectacular highlights and bright whites, The new MacBook Pro features a stunning 16-inch Retina display — the largest Retina display ever in a Mac notebook. It produces 500 nits of brightness for spectacular highlights and bright whites"
 
 const displayModal = ref(false);
