@@ -1,6 +1,7 @@
 import { ref, onMounted, onUnmounted } from 'vue'
 
 export function useWidth() {
+  // checking if window is defined to avoid SSR errors - common in Nuxt
   const windowWidth = ref(typeof window !== 'undefined' ? window.innerWidth : 0)
 
   const updateWindowWidth = () => {

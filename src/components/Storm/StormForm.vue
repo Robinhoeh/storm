@@ -4,6 +4,7 @@ import IconClose from '../icons/IconClose.vue';
 import StormButton from '../Storm/StormButton.vue';
 
 const emit = defineEmits(['submit', 'clear-data'])
+
 const searchModel = defineModel()
 const handleSubmit = () => {
   emit('submit', searchModel.value)

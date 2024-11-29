@@ -8,11 +8,10 @@ import IconClose from './components/icons/IconClose.vue';
 
 const { windowWidth } = useWidth()
 
-const availableItems = computed(() => tableData.value.length);
-
 const tableData = ref([]);
-
 const displayedData = ref([]);
+
+const availableItems = computed(() => tableData.value.length);
 
 const formattedData = computed(() => {
   return displayedData.value.map((item) => {
@@ -79,7 +78,6 @@ const handleDisplayModal = (row) => {
   selectedRow.value = row;
   displayModal.value = true
 };
-
 
 const searchTerm = ref()
 const handleFormSubmit = () => {
@@ -151,7 +149,6 @@ onMounted(async () => {
     <StormNav v-model="searchTerm" @submit="handleFormSubmit" @clear-data="clearData" @close-menu="closeMenu" />
     <StormTable @row-clicked="handleDisplayModal" @sort-list="handleHeaderClick" :table-data="windowWidth < 992 ? mobileData : formattedData" :table-headers="formattedHeaders" :table-items="availableItems" />
   </div>
-
 </template>
 
 <style scoped lang="scss">

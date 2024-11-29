@@ -24,7 +24,6 @@ defineEmits(['closeModal']);
         </div>
       </div>
     </div>
-
   </Transition>
 </template>
 
