@@ -1,8 +1,9 @@
 <script setup>
 import IconSearch from '../icons/IconSearch.vue';
+import IconClose from '../icons/IconClose.vue';
 import StormButton from '../Storm/StormButton.vue';
 
-const emit = defineEmits(['submit'])
+const emit = defineEmits(['submit', 'clear-data'])
 const searchModel = defineModel()
 const handleSubmit = () => {
   console.log(searchModel.value)
@@ -12,7 +13,8 @@ const handleSubmit = () => {
 
 <template>
   <form class="form" @submit.prevent="handleSubmit">
-    <IconSearch class="search-icon" />
+    <IconSearch v-if="!searchModel" class="search-icon" />
+    <IconClose v-else class="icon-close" @click="searchModel = '', $emit('clear-data')" />
     <input v-model="searchModel" class="search-input" type='text' placeholder="Search">
     <StormButton content="Search" role='primary' @handle-click="handleSubmit" />
   </form>
@@ -26,11 +28,16 @@ const handleSubmit = () => {
   width: 100%;
   font-family: $primary-font;
 
-  .search-icon {
+  .search-icon,
+  .icon-close {
     position: absolute;
     top: 50%;
     left: 16px;
     transform: translateY(-58%);
+  }
+
+  .icon-close {
+    cursor: pointer;
   }
 
   .search-input {

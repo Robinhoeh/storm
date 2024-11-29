@@ -173,6 +173,10 @@ const handleFormSubmit = () => {
   })
 }
 
+const clearData = () => {
+  displayedData.value = [...tableData]
+}
+
 const handleHeaderClick = (header) => {
   if (header === 'Quantity') {
     const isAscending = displayedData.value[0].quantity < displayedData.value[displayedData.value.length - 1].quantity;
@@ -218,7 +222,7 @@ const handleHeaderClick = (header) => {
         </div>
       </template>
     </StormModal>
-    <StormNav v-model="searchTerm" @submit="handleFormSubmit" />
+    <StormNav v-model="searchTerm" @submit="handleFormSubmit" @clear-data="clearData" />
     <StormTable @row-clicked="handleDisplayModal" @sort-list="handleHeaderClick" :table-data="windowWidth < 992 ? mobileData : formattedData" :table-headers="formattedHeaders" :table-items="availableItems" />
   </div>
 

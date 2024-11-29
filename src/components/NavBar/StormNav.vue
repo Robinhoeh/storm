@@ -17,7 +17,7 @@ const searchModel = defineModel()
       <IconStormHamburger class="hamburger" />
     </div>
     <div class="nav-actions">
-      <StormForm v-model="searchModel" @submit="emit('submit')" />
+      <StormForm v-model="searchModel" @submit="emit('submit')" @clear-data="emit('clear-data')" />
       <div class="nav-actions-icons">
         <IconGear class="nav-icon" />
         <IconNotification class="nav-icon" />
