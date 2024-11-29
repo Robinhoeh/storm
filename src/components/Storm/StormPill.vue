@@ -19,7 +19,7 @@ const dynamicStyles = computed(() => {
 </script>
 
 <template>
-  <div class="pill" :class="[dynamicStyles]">
+  <div class="pill" :class="dynamicStyles">
     {{ props.title }}
   </div>
 </template>
