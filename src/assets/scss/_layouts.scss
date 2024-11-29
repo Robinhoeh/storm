@@ -1,11 +1,5 @@
 // Breakpoints
-$breakpoints: (
-  xs: 0,
-  sm: 576px,
-  md: 768px,
-  lg: 992px,
-  xl: 1200px,
-);
+$lg-breakpoint: 992px;
 
 $max-window-width: 1440px;
 $layout-min-width: 390px;

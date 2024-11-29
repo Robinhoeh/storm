@@ -1,5 +1,4 @@
 // This @use is used to surface the variables, mixins, and functions from the other files in the project.
-@use './base' as *;
 @use './layouts' as *;
 @use './typography' as *;
 @use './variables' as *;
@@ -8,15 +7,6 @@
 @forward 'layouts';
 @forward 'typography';
 @forward 'variables';
-@forward 'base';
-
-h6 {
-  font-size: $font-size-xl;
-  font-weight: $font-weight-bold;
-  line-height: $line-height-lg;
-  font-family: $secondary-font;
-  color: $primary-text-color;
-}
 
 span {
   font-size: $font-size-md;
